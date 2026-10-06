@@ -1,4 +1,6 @@
 /-!
+Copyright (c) 2026 Benjamin Stanley Frohman. Apache-2.0. See LICENSE.
+
 # Guidance identity, checked with Lean 4.16.0, no Mathlib
 
 `lean BohmIdentities.lean` exits 0.
