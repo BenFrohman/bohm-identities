@@ -14,5 +14,11 @@ Im(dψ · conj ψ) = dS · |ψ|²
 
 Not in this file: the winding `∮ ∇S · dl = 2π` around a simple zero, the oscillator ground-state eigenvalue, and the split-step integrator. Those are analysis or numerics.
 
+## License
+
 Copyright (c) 2026 Benjamin Stanley Frohman.
-Licensed under the Apache License, Version 2.0. See LICENSE.
+
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
+The Lean module carries `SPDX-License-Identifier: Apache-2.0`.
+
+The canonical repository is this one. [BenFrohman/BohmIdentities](https://github.com/BenFrohman/BohmIdentities) is an empty name collision and does not contain the proof.
