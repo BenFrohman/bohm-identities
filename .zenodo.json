@@ -1,0 +1,33 @@
+{
+  "title": "Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies)",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "publication_date": "2026-10-06",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "doi": "10.5281/zenodo.23629497",
+  "creators": [
+    {
+      "name": "Frohman, Benjamin Stanley",
+      "affiliation": "Independent Researcher",
+      "orcid": "0009-0006-7068-3718"
+    }
+  ],
+  "keywords": [
+    "Bohmian mechanics",
+    "Madelung transform",
+    "quantum potential",
+    "guidance equation",
+    "Lean 4",
+    "formal verification"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/BenFrohman/bohm-identities",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Origin Provenance: 2026-10-06 08:18:54 CDT (Git Initial Commit). Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. Licensed under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).",
+  "description": "<p>Zero-<code>sorry</code> formalization in core Lean 4 (<code>BohmIdentities.lean</code>, zero external dependencies) proving the cleared algebraic identities underlying the Bohmian guidance law <code>Im(d&psi; &middot; conj &psi;) = dS &middot; |&psi;|^2</code> (<code>Bohm.guidance_cleared</code>) and the quantum potential prefactor identity (<code>Bohm.quantumPotential_cleared</code>).</p>"
+}

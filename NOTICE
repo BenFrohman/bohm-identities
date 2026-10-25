@@ -1,10 +1,15 @@
-bohm-identities
-Copyright 2026 Benjamin Stanley Frohman (ORCID: https://orcid.org/0009-0006-7068-3718)
-
-Author: Benjamin Stanley Frohman <frohmanbenjamin@gmail.com>
+bohm-identities — Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies)
+Copyright 2026 Benjamin Stanley Frohman
 ORCID: https://orcid.org/0009-0006-7068-3718
 GitHub: https://github.com/BenFrohman/bohm-identities
+Zenodo DOI: https://doi.org/10.5281/zenodo.23629497
+Origin Provenance: 2026-10-06 08:18:54 CDT (Git Initial Commit)
 
-This work includes software, formal specifications, and mathematical manuscripts
-developed by Benjamin Stanley Frohman and licensed under the Apache License,
-Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0). See LICENSE.
+This product includes software, formal Lean 4 proofs, and mathematical manuscripts developed by
+Benjamin Stanley Frohman (frohmanbenjamin@gmail.com).
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this work except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0

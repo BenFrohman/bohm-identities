@@ -1,0 +1,41 @@
+% Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
+% Released under Apache 2.0 license as described in the file LICENSE.
+% Authors: Benjamin Stanley Frohman (ORCID: 0009-0006-7068-3718)
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+
+\title{\textbf{Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies)}}
+\author{Benjamin Stanley Frohman\\
+\small Independent Researcher \quad|\quad ORCID: \href{https://orcid.org/0009-0006-7068-3718}{0009-0006-7068-3718}\\
+\small \texttt{frohmanbenjamin@gmail.com}}
+\date{Origin Provenance: October 6, 2026 (08:18:54 CDT) \\ \small Repository: \texttt{BenFrohman/bohm-identities} \quad|\quad Licensed under Apache-2.0}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We provide a standalone, zero-\texttt{sorry} formalization in core Lean 4 (\texttt{BohmIdentities.lean}, requiring zero external Mathlib imports and verifying directly with \texttt{lean BohmIdentities.lean}) of the cleared algebraic identities underlying the Madelung hydrodynamical transform and Bohmian guidance law. Given polar components $\psi = (R c, R s)$ and product-rule differential $d\psi = (dR\,c - R\,s\,dS,\; dR\,s + R\,c\,dS)$, the theorem \texttt{Bohm.guidance\_cleared} proves $\mathrm{Im}(d\psi \cdot \overline{\psi}) = dS \cdot |\psi|^2$, and \texttt{Bohm.quantumPotential\_cleared} proves the cleared prefactor identity $(-\Delta R)(2R) = 2((-\Delta R)R)$ for the Bohm quantum potential $Q = -\frac{\hbar^2}{2m}\frac{\Delta R}{R}$.
+\end{abstract}
+
+\section{Formalized Theorems in \texttt{BohmIdentities.lean}}
+\begin{theorem}[\texttt{Bohm.guidance\_cleared}]
+For all $R, dR, c, s, dS \in \mathbb{Z}$:
+\[
+(dR \cdot s + R \cdot c \cdot dS)(R \cdot c) - (dR \cdot c - R \cdot s \cdot dS)(R \cdot s) = dS \cdot \bigl((R \cdot c)^2 + (R \cdot s)^2\bigr).
+\]
+\end{theorem}
+
+\begin{theorem}[\texttt{Bohm.quantumPotential\_cleared}]
+For all $\Delta R, R \in \mathbb{Z}$:
+\[
+(-\Delta R) \cdot (2R) = 2 \cdot ((-\Delta R) \cdot R).
+\]
+\end{theorem}
+
+\section*{License and Copyright}
+Copyright \copyright\ 2026 Benjamin Stanley Frohman. All rights reserved. Licensed under the Apache License, Version 2.0 (\url{http://www.apache.org/licenses/LICENSE-2.0}).
+\end{document}
