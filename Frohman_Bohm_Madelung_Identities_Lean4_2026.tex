@@ -1,41 +1,129 @@
-% Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-% Released under Apache 2.0 license as described in the file LICENSE.
-% Authors: Benjamin Stanley Frohman (ORCID: 0009-0006-7068-3718)
-\documentclass[11pt]{article}
+\documentclass[11pt]{amsart}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{hyperref}
+\usepackage{longtable,booktabs,array}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\lean}[1]{\path{#1}}
+\sloppy
 
-\newtheorem{theorem}{Theorem}
-
-\title{\textbf{Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies)}}
-\author{Benjamin Stanley Frohman\\
-\small Independent Researcher \quad|\quad ORCID: \href{https://orcid.org/0009-0006-7068-3718}{0009-0006-7068-3718}\\
-\small \texttt{frohmanbenjamin@gmail.com}}
-\date{Origin Provenance: October 6, 2026 (08:18:54 CDT) \\ \small Repository: \texttt{BenFrohman/bohm-identities} \quad|\quad Licensed under Apache-2.0}
-
+\title[Cleared Madelung identities in Lean 4]{Cleared Guidance and Quantum-Potential Identities for the Polar Form of a Wave Function over the Integers: a Lean~4 Formalization}
+\author{Benjamin Stanley Frohman}
+\email{frohmanbenjamin@gmail.com}
+\date{November 4, 2026}
 \begin{document}
+\begin{abstract}
+We record and machine-check two polynomial identities that underlie the de Broglie--Bohm guidance law and the Bohm quantum-potential prefactor, in a form cleared of all denominators. Writing $\psi=(Rc,Rs)$ and the product-rule derivative $d\psi=(dR\,c-Rs\,dS,\ dR\,s+Rc\,dS)$, we prove that $\operatorname{Im}(d\psi\cdot\overline{\psi})=dS\,|\psi|^2$ holds as an identity in the integers $\mathbb{Z}$ for arbitrary values of $R,dR,c,s,dS$, and that $(-\Delta R)(2R)=2\,((-\Delta R)R)$. The proofs are carried out in Lean~4 using the core library only (no Mathlib), contain no \texttt{sorry}, and depend on no axioms beyond Lean's standard ones. The paper states precisely what is formalized and what is not.
+\end{abstract}
 \maketitle
 
-\begin{abstract}
-We provide a standalone, zero-\texttt{sorry} formalization in core Lean 4 (\texttt{BohmIdentities.lean}, requiring zero external Mathlib imports and verifying directly with \texttt{lean BohmIdentities.lean}) of the cleared algebraic identities underlying the Madelung hydrodynamical transform and Bohmian guidance law. Given polar components $\psi = (R c, R s)$ and product-rule differential $d\psi = (dR\,c - R\,s\,dS,\; dR\,s + R\,c\,dS)$, the theorem \texttt{Bohm.guidance\_cleared} proves $\mathrm{Im}(d\psi \cdot \overline{\psi}) = dS \cdot |\psi|^2$, and \texttt{Bohm.quantumPotential\_cleared} proves the cleared prefactor identity $(-\Delta R)(2R) = 2((-\Delta R)R)$ for the Bohm quantum potential $Q = -\frac{\hbar^2}{2m}\frac{\Delta R}{R}$.
-\end{abstract}
+\section{Introduction}
+In the Madelung (polar) representation $\psi=Re^{iS}$ of a wave function, the de Broglie--Bohm velocity field is $\nabla S=\operatorname{Im}(\nabla\psi/\psi)$ wherever $\psi\neq0$, and the quantum potential is $Q=-\tfrac{\hbar^2}{2m}\,\Delta R/R$. Both statements are, at bottom, algebraic identities once the derivatives are expressed through the product rule. This note isolates those identities in their \emph{cleared} (division-free) form and verifies them in the Lean~4 proof assistant.
 
-\section{Formalized Theorems in \texttt{BohmIdentities.lean}}
-\begin{theorem}[\texttt{Bohm.guidance\_cleared}]
-For all $R, dR, c, s, dS \in \mathbb{Z}$:
+The formal development is deliberately elementary: all quantities are integers and the identities are polynomial. The contribution is a short, fully checked statement of exactly which algebra the guidance law rests on. Analytic content (differentiability, the Schr\"odinger equation, winding numbers, the harmonic-oscillator spectrum, split-step integrators) is \emph{not} formalized here.
+
+\section{Setting}
+Fix integers $R,dR,c,s,dS$. Here $c,s$ play the role of $\cos S,\sin S$ (no relation $c^2+s^2=1$ is assumed), $dR$ and $dS$ the derivatives of amplitude and phase along one direction. Put
 \[
-(dR \cdot s + R \cdot c \cdot dS)(R \cdot c) - (dR \cdot c - R \cdot s \cdot dS)(R \cdot s) = dS \cdot \bigl((R \cdot c)^2 + (R \cdot s)^2\bigr).
+\psi=(Rc,\ Rs),\qquad d\psi=(dR\,c-Rs\,dS,\ \ dR\,s+Rc\,dS).
 \]
+The second formula is the product rule for $R\cdot(c,s)$ with $dc=-s\,dS$, $ds=c\,dS$; in the formalization it is a \emph{definition of the input}, i.e.\ a hypothesis on the shape of $d\psi$, not something derived.
+
+For $z=(a,b)$, $w=(a',b')$ regarded as complex numbers $a+ib$, $a'+ib'$, one has $\operatorname{Im}(z\overline{w})=ba'-ab'$ and $|w|^2=a'^2+b'^2$.
+
+\section{Results}
+\begin{theorem}[Cleared guidance law; \lean{Bohm.guidance_cleared}]\label{thm:guidance}
+For all $R,dR,c,s,dS\in\mathbb{Z}$,
+\[
+(dR\,s+Rc\,dS)(Rc)-(dR\,c-Rs\,dS)(Rs)\;=\;dS\,\bigl((Rc)(Rc)+(Rs)(Rs)\bigr).
+\]
+That is, $\operatorname{Im}(d\psi\cdot\overline{\psi})=dS\,|\psi|^2$.
 \end{theorem}
 
-\begin{theorem}[\texttt{Bohm.quantumPotential\_cleared}]
-For all $\Delta R, R \in \mathbb{Z}$:
-\[
-(-\Delta R) \cdot (2R) = 2 \cdot ((-\Delta R) \cdot R).
-\]
-\end{theorem}
+\begin{remark}
+Over a field, dividing by $|\psi|^2\neq0$ gives $\operatorname{Im}(d\psi/\psi)=dS$, the guidance law. The division step is \emph{not} part of the formalization; only the cleared identity of Theorem~\ref{thm:guidance} is proved.
+\end{remark}
 
-\section*{License and Copyright}
-Copyright \copyright\ 2026 Benjamin Stanley Frohman. All rights reserved. Licensed under the Apache License, Version 2.0 (\url{http://www.apache.org/licenses/LICENSE-2.0}).
+\begin{theorem}[Cleared quantum-potential prefactor; \lean{Bohm.quantumPotential_cleared}]\label{thm:qp}
+For all $\Delta R,R\in\mathbb{Z}$, $(-\Delta R)(2R)=2\,\bigl((-\Delta R)R\bigr)$.
+\end{theorem}
+This is the statement that $-\tfrac12\,\Delta R/R$ and $-\Delta R/(2R)$ agree after clearing the common denominator $2R$.
+
+The proof of Theorem~\ref{thm:guidance} uses three auxiliary lemmas, all proved for arbitrary integers:
+\begin{lemma}\label{lem:aux}
+\begin{enumerate}
+\item (\lean{Bohm.add_neg_self}) $a+(-a)=0$.
+\item (\lean{Bohm.cross}) $(dR\,s)(Rc)=(dR\,c)(Rs)$: the two cross terms of the product rule coincide.
+\item (\lean{Bohm.phaseTerm}) $(Rc\,dS)(Rc)=dS\,\bigl((Rc)(Rc)\bigr)$: a phase term factors out $dS$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}[Proof of Theorem~\ref{thm:guidance}]
+Expand the left side. The two cross terms $(dR\,s)(Rc)$ and $-(dR\,c)(Rs)$ cancel by Lemma~\ref{lem:aux}(2),(1). The remaining terms $(Rc\,dS)(Rc)+(Rs\,dS)(Rs)$ equal $dS(Rc)(Rc)+dS(Rs)(Rs)$ by Lemma~\ref{lem:aux}(3), and distributivity gives the right side. The Lean proof follows exactly this calculation using rewriting with core \texttt{Int} lemmas.
+\end{proof}
+
+\section{Scope}
+The formalization proves the five integer identities above and nothing more. In particular it does not formalize: the division $\operatorname{Im}(d\psi/\psi)=dS$; any real or complex analysis; the Schr\"odinger or continuity equations; quantization of circulation or winding; the oscillator eigenvalue; or any numerical scheme.
+
+\section{Correspondence between claims and Lean declarations}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Claim in this paper & Lean declaration & File\\
+\midrule
+Theorem~\ref{thm:guidance} & \lean{Bohm.guidance_cleared} & \lean{BohmIdentities.lean}\\
+Theorem~\ref{thm:qp} & \lean{Bohm.quantumPotential_cleared} & \lean{BohmIdentities.lean}\\
+Lemma~\ref{lem:aux}(1) & \lean{Bohm.add_neg_self} & \lean{BohmIdentities.lean}\\
+Lemma~\ref{lem:aux}(2) & \lean{Bohm.cross} & \lean{BohmIdentities.lean}\\
+Lemma~\ref{lem:aux}(3) & \lean{Bohm.phaseTerm} & \lean{BohmIdentities.lean}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each Lean statement is the displayed formula verbatim, with all variables universally quantified over \texttt{Int}. The development uses Lean~4 core only (no Mathlib).
+
+\appendix
+\section{Verification certificate}\label{app:verification-certificate}
+
+The formal development was machine-checked as follows.
+
+{\raggedright
+\begin{itemize}
+\item Repository:\\ {\footnotesize\url{https://github.com/BenFrohman/bohm-identities}}
+\item Verified commit:\\ {\footnotesize\texttt{6e24d96576d0d54e28ebf882bec19ac56c5a5af6}}
+\item Lean toolchain: \texttt{leanprover/lean4:v4.22.0}
+\item Mathlib: none (the development depends only on Lean core)
+\item Continuous integration run (build, axiom audit, \texttt{sorry}/\texttt{axiom} scan; passed):\\ {\footnotesize\url{https://github.com/BenFrohman/bohm-identities/actions/runs/41794833590}}
+\item SHA-256 of the GitHub source tarball of the verified commit, downloaded twice with identical result:\\ {\footnotesize\url{https://github.com/BenFrohman/bohm-identities/archive/6e24d96576d0d54e28ebf882bec19ac56c5a5af6.tar.gz}}\\
+{\footnotesize\texttt{21ae9b7cfa87fb56aeca37596df4c0733d6093309540496913081fb16d243437}}
+\end{itemize}\par}
+
+The tarball hash refers to the verified commit rather than to a release tag, since a document cannot contain the hash of an archive that includes itself. The Lean sources are unchanged between that commit and the release tag.
+
+\textbf{The development contains no \texttt{sorry} and no user-declared axioms.} Every one of the 5 theorems and lemmas listed below depends only on Lean's standard axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound} (or on none). The table is the verbatim output of \texttt{lake env lean AxiomAudit.lean} (\texttt{\#print axioms}) on the verified commit.
+
+{\footnotesize
+\begin{longtable}{p{0.55\linewidth}p{0.38\linewidth}}
+\hline
+Lean declaration & \texttt{\#print axioms} \\
+\hline\endhead
+\path{Bohm.add_neg_self} & \texttt{[propext]} \\
+\path{Bohm.cross} & \texttt{[propext]} \\
+\path{Bohm.guidance_cleared} & \texttt{[propext]} \\
+\path{Bohm.phaseTerm} & \texttt{[propext]} \\
+\path{Bohm.quantumPotential_cleared} & \texttt{[propext]} \\
+\hline
+\end{longtable}}
+
+\begin{thebibliography}{9}
+\bibitem{bohm} D.~Bohm, \emph{A suggested interpretation of the quantum theory in terms of ``hidden'' variables.~I}, Phys.\ Rev.\ \textbf{85} (1952), 166--179.
+\bibitem{madelung} E.~Madelung, \emph{Quantentheorie in hydrodynamischer Form}, Z.\ Phys.\ \textbf{40} (1927), 322--326.
+\bibitem{lean} L.~de~Moura and S.~Ullrich, \emph{The Lean~4 theorem prover and programming language}, CADE-28, LNCS 12699 (2021), 625--635.
+\end{thebibliography}
 \end{document}

@@ -1,9 +1,9 @@
 {
-  "title": "Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies)",
+  "title": "Cleared Guidance and Quantum-Potential Identities for the Polar Form of a Wave Function over the Integers: a Lean 4 Formalization",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "publication_date": "2026-10-06",
-  "version": "1.0.0",
+  "publication_date": "2026-11-04",
+  "version": "1.1.0",
   "license": "Apache-2.0",
   "doi": "10.5281/zenodo.23629497",
   "creators": [
@@ -29,5 +29,5 @@
     }
   ],
   "notes": "Origin Provenance: 2026-10-06 08:18:54 CDT (Git Initial Commit). Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. Licensed under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).",
-  "description": "<p>Zero-<code>sorry</code> formalization in core Lean 4 (<code>BohmIdentities.lean</code>, zero external dependencies) proving the cleared algebraic identities underlying the Bohmian guidance law <code>Im(d&psi; &middot; conj &psi;) = dS &middot; |&psi;|^2</code> (<code>Bohm.guidance_cleared</code>) and the quantum potential prefactor identity (<code>Bohm.quantumPotential_cleared</code>).</p>"
+  "description": "Lean 4 (core only, v4.22.0) formalization of the denominator-free identities behind the de Broglie-Bohm guidance law and quantum-potential prefactor: Im(dpsi * conj psi) = dS |psi|^2 over Int for psi=(Rc,Rs) and its product-rule derivative (Bohm.guidance_cleared), and (-dR)(2R)=2((-dR)R) (Bohm.quantumPotential_cleared), plus three auxiliary lemmas. 5 theorems, no sorry, no user axioms; axiom audit shows only propext. The attached paper states exactly these results, with a claim-to-Lean table and verification certificate."
 }
