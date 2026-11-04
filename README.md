@@ -1,6 +1,8 @@
 # Bohm identities
 
-[![Lean certificate](https://github.com/BenFrohman/bohm-identities/actions/workflows/certify.yml/badge.svg)](https://github.com/BenFrohman/bohm-identities/actions/workflows/certify.yml)
+[![Lean certificate](https://github.com/BenFrohman/bohm-identities/actions/workflows/certify.yml/badge.svg?branch=main)](https://github.com/BenFrohman/bohm-identities/actions/workflows/certify.yml)
+[![Lean 4](https://github.com/BenFrohman/bohm-identities/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/BenFrohman/bohm-identities/actions/workflows/lean.yml)
+
 
 <!-- ZENODO-PROVENANCE-HEADER -->
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23629497.svg)](https://doi.org/10.5281/zenodo.23629497)
