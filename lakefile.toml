@@ -1,0 +1,5 @@
+name = "BohmIdentities"
+defaultTargets = ["BohmIdentities"]
+
+[[lean_lib]]
+name = "BohmIdentities"
