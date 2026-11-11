@@ -44,3 +44,7 @@ The canonical repository is this one. [BenFrohman/BohmIdentities](https://github
 
 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23629496.svg)](https://doi.org/10.5281/zenodo.23629496) Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies) — all versions: [10.5281/zenodo.23629496](https://doi.org/10.5281/zenodo.23629496); latest version: [10.5281/zenodo.23629497](https://doi.org/10.5281/zenodo.23629497)
 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23867565.svg)](https://doi.org/10.5281/zenodo.23867565) Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies) — all versions: [10.5281/zenodo.23867565](https://doi.org/10.5281/zenodo.23867565); latest version: [10.5281/zenodo.23867566](https://doi.org/10.5281/zenodo.23867566)
+
+## Citation
+
+Cite this work with [`CITATION.cff`](CITATION.cff) (GitHub's "Cite this repository" button). Zenodo DOI: [10.5281/zenodo.23629497](https://doi.org/10.5281/zenodo.23629497).
