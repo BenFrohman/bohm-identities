@@ -1,0 +1,6 @@
+'Bohm.add_neg_self' depends on axioms: [propext]
+'Bohm.cross' depends on axioms: [propext]
+'Bohm.guidance_cleared' depends on axioms: [propext]
+'Bohm.phaseTerm' depends on axioms: [propext]
+'Bohm.quantumPotential_cleared' depends on axioms: [propext]
+AUDIT PASS: 5 theorems in 1 modules depend only on propext, Classical.choice, Quot.sound (or on no axioms)
