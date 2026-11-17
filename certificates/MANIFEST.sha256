@@ -1,0 +1,16 @@
+# Kernel certificate manifest
+# source commit: 00d65e8afea863a2609bec6409f6937f67ff13b8
+# lean-toolchain: leanprover/lean4:v4.22.0
+# Mathlib: none (no Mathlib dependency)
+# CI run: https://github.com/BenFrohman/bohm-identities/actions/runs/43954468736
+# rebuild: git clone https://github.com/BenFrohman/bohm-identities.git && cd bohm-identities && git checkout 00d65e8afea863a2609bec6409f6937f67ff13b8 && lake build && python3 certificates/tools/sorry_scan.py && python3 certificates/tools/gen_audit.py /tmp/KernelCertificateAudit.lean /tmp/modules.txt && lake env lean /tmp/KernelCertificateAudit.lean > /tmp/axioms.raw.txt && python3 certificates/tools/check_audit.py /tmp/axioms.raw.txt | tail -n 1
+# verify: cd certificates && sha256sum -c MANIFEST.sha256
+33e7994c0b8eafad2c6cb90d9b7e747f2011cb7fc07ccaac66ba7b4b327e31e1  CERTIFICATE.md
+c2a5e1dfcaf72324cdd17a0d8cbab224b4e9773a5d86dea25d9d8bac2775f4ef  KernelCertificateAudit.lean.txt
+3b09fcf9dbcb252664055ac0e135de3b57dc88b803714ac478d37b6fc4556b81  axioms.raw.txt
+e7ef35518c60e4c25590b48eb4aaeae9e8fd584847364cd3660f1842b78634d6  axioms.txt
+9532c405b3e56beb2ed1b4466245a348c4dcf1967280bf9f8310f6c0d73e70f0  build.log
+a8bb1ea2408fe7d2847c4d3bb7591ce2c98dee3729a9ba13068de944bfed739d  environment.txt
+08073a1081b7b6d89fc496331b5219d4d99e697591ec03267bbf4fd633098603  leanchecker.txt
+a36509a5d34e29ecbef00028e9a1134ad6633bcddf9a538305aaf1aafdabc144  modules.txt
+6449b8d6057c95fbe2771924993805383a0a6c2aa6145c8ea2143551864bd491  sorry-scan.txt
