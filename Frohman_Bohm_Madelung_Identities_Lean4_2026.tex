@@ -1,3 +1,5 @@
+% Copyright (c) 2026 Benjamin Stanley Frohman
+% Licensed under the Apache License 2.0
 \documentclass[11pt]{amsart}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -24,6 +26,8 @@
 We record and machine-check two polynomial identities that underlie the de Broglie--Bohm guidance law and the Bohm quantum-potential prefactor, in a form cleared of all denominators. Writing $\psi=(Rc,Rs)$ and the product-rule derivative $d\psi=(dR\,c-Rs\,dS,\ dR\,s+Rc\,dS)$, we prove that $\operatorname{Im}(d\psi\cdot\overline{\psi})=dS\,|\psi|^2$ holds as an identity in the integers $\mathbb{Z}$ for arbitrary values of $R,dR,c,s,dS$, and that $(-\Delta R)(2R)=2\,((-\Delta R)R)$. The proofs are carried out in Lean~4 using the core library only (no Mathlib), contain no \texttt{sorry}, and depend on no axioms beyond Lean's standard ones. The paper states precisely what is formalized and what is not.
 \end{abstract}
 \maketitle
+\noindent{\small Copyright (c) 2026 Benjamin Stanley Frohman. Licensed under the Apache License 2.0.}\par
+
 
 \section{Introduction}
 In the Madelung (polar) representation $\psi=Re^{iS}$ of a wave function, the de Broglie--Bohm velocity field is $\nabla S=\operatorname{Im}(\nabla\psi/\psi)$ wherever $\psi\neq0$, and the quantum potential is $Q=-\tfrac{\hbar^2}{2m}\,\Delta R/R$. Both statements are, at bottom, algebraic identities once the derivatives are expressed through the product rule. This note isolates those identities in their \emph{cleared} (division-free) form and verifies them in the Lean~4 proof assistant.

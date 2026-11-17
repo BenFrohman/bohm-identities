@@ -44,6 +44,8 @@ The Lean module carries `SPDX-License-Identifier: Apache-2.0`.
 
 The canonical repository is this one. [BenFrohman/BohmIdentities](https://github.com/BenFrohman/BohmIdentities) is an empty name collision and does not contain the proof.
 
+
+Any use, reproduction, or redistribution, in whole or in part, must retain the [NOTICE](NOTICE) file and credit Benjamin Stanley Frohman as the author. If you use this work in a publication, please cite it (see [CITATION.cff](CITATION.cff) / the Zenodo DOI).
 ## Zenodo archive
 
 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23629496.svg)](https://doi.org/10.5281/zenodo.23629496) Exact Madelung and Bohm Quantum Potential Identities in Core Lean 4 (Zero Mathlib Dependencies) — all versions: [10.5281/zenodo.23629496](https://doi.org/10.5281/zenodo.23629496); latest version: [10.5281/zenodo.23629497](https://doi.org/10.5281/zenodo.23629497)
